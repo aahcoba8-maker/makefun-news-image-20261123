@@ -161,6 +161,10 @@ FONT5 = {
 }
 
 
+# Rendering contract: draw_page() holds every layout decision (masthead,
+# leads, map pins, legend, footer). The two backends further down only
+# supply drawing primitives - PIL when available, pure stdlib otherwise -
+# so both render the same page. Layout changes belong in draw_page().
 def draw_page(text, rect, circle, polygon, line, wrap, measure, textfit):
     """Shared page layout. Backends supply the drawing primitives."""
     def centered(y, s, size, b=False, color=INK):
