@@ -615,8 +615,9 @@ def compose(pen):
 
 
 def main():
-    out = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                       "entry.png")
+    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR") or os.path.dirname(
+        os.path.abspath(__file__))
+    out = os.path.join(out_dir, "entry.png")
     try:
         import PIL.Image  # noqa: F401
         pen = PilPen()
